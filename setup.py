@@ -5,7 +5,7 @@ from setuptools import find_packages
 #   long_description = f.read()
 
 setup(name='pypi_seed',  # 包名
-      version='0.0.1',  # 版本号
+      version='1.0.0',  # 版本号
       description='A small tool to demo on upload package to pypi and utility scripts to generate a pypi seed',
       long_description="Powered by py4ever team!",
       author='levin',
