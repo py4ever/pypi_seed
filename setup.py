@@ -5,9 +5,11 @@ from setuptools import find_packages
 #   long_description = f.read()
 
 setup(name='pypi_seed',  # 包名
-      version='1.0.0',  # 版本号
+      version='1.0.1',  # 版本号
+      keywords=("pypi_seed", "seed", "generator", "levin", "leixuewei"),
       description='A small tool to demo on upload package to pypi and utility scripts to generate a pypi seed',
-      long_description="Powered by py4ever team!",
+      long_description="""A small tool to demo on upload package to pypi and utility scripts to generate a pypi seed!
+Powered by py4ever team!""",
       author='levin',
       author_email='991219092@qq.com',
       url='https://blog.csdn.net/geeklevin',
@@ -15,6 +17,12 @@ setup(name='pypi_seed',  # 包名
       license='Apache License 2.0',
       packages=find_packages(),
       platforms=["all"],
+      entry_points={
+          'console_scripts': [
+              'pypiseed = pypi_seed.main:main',
+              'pyseed = pypi_seed.main:main'
+          ]
+      },
       classifiers=[
           'Intended Audience :: Developers',
           'Operating System :: OS Independent',
