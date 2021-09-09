@@ -17,22 +17,29 @@ pip install pypi_seed
 
 打开python终端REPL， 输入下面代码：
 
+
+默认生成方法，需要自己修改作者，项目名字（仅做试手）
+```
+import pypi_seed.generator as pm
+pm.generate() #当前目录生成pypi_sample
+```
+
 定制生成自己的pypi库
 
 ```
-import pypi_seed.main as pm
-pm.generate() #当前目录生成pypi_sample
+import pypi_seed.generator as pm
 #或者加一个路径参数
 pm.generate('/tmp') #当前目录生成/tmp/pypi_sample
 ```
 
+也可以定制作者项目信息，再生成自己的pypi库
 
+```
+import pypi_seed.generator as pm
+#当前目录生成/tmp/pypi_sample，作者Lei小花"
+pm.generate(path="/tmp", project="pypi_sample", author="Lei小花") 
+```
 
-默认生成方法，需要自己修改作者，项目名字
-```
-import pypi_seed.main as pm
-pm.generate() #当前目录生成pypi_sample
-```
 
 # 更多使用问题
 
