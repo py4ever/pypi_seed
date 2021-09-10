@@ -8,13 +8,13 @@
 
 QQ交流：https://jq.qq.com/?_wv=1027&k=lYdDWNQc
 
-## 安装
+## 安装 / Installation
 
 ```bash
-pip install pypiseed
+pip install pypi_seed
 ```
 
-## 使用
+## 使用  / Usage
 
 打开python
 

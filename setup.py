@@ -1,18 +1,16 @@
 from distutils.core import setup
 from setuptools import find_packages
 
-# with open("README.rst", "r") as f:
-#   long_description = f.read()
 
 setup(name='pypi_seed',  # 包名
-      version='1.0.1',  # 版本号
+      version='1.0.3',  # 版本号
       keywords=("pypi_seed", "seed", "generator", "levin", "leixuewei"),
       description='A small tool to demo on upload package to pypi and utility scripts to generate a pypi seed',
       long_description="""A small tool to demo on upload package to pypi and utility scripts to generate a pypi seed!
 Powered by py4ever team!""",
       author='levin',
       author_email='991219092@qq.com',
-      url='https://blog.csdn.net/geeklevin',
+      url='https://github.com/py4ever/pypi_seed',
       install_requires=[],
       license='Apache License 2.0',
       packages=find_packages(),

@@ -8,7 +8,7 @@
 # @Project : pypi_seed
 
 import sys
-import argsparser
+import pypi_seed.argsparser as argsparser
 from pypi_seed.generator import do_generate
 
 def main():
