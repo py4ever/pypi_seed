@@ -19,8 +19,8 @@ def do_generate():
     generate(**conf)
 
 
-def generate(path=".", project="pypi_sample", author="pypi_seed"):
-    seed_dir = os.path.join(path, project)
+def generate(dir=".", project="pypi_sample", author="pypi_seed"):
+    seed_dir = os.path.join(dir, project)
     print("will generate project at %s " % seed_dir)
     if os.path.exists(seed_dir):
         print("project is already generated")
