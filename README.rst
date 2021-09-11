@@ -33,3 +33,36 @@ Installation / 安装
     pip install pypi_seed
 
 
+
+Usage / 使用
+--------------------------
+
+We can call the cli 'pypiseed' or 'pyseed' to generate 'demo_project' on dir '/tmp'：
+
+调用下面任意一个命令行即可，作用是生成demo_project 到/tmp目录
+
+::
+
+    pypiseed --project=demo_project --author=testuser --dir=/tmp
+
+
+Yet another option / 另一种方式：
+
+::
+
+    pyseed --project=demo_project --author=testuser --dir=/tmp
+
+
+
+Further discussion / 更多
+--------------------------
+
+
+Please raise PR or find the tencent group chat : `QQGroupChat`_
+
+其他问题可以找qq：【`Python全栈技术学习交流`_】
+
+
+.. _`链接文本`: https://your_site_link_here
+.. _`QQGroupChat`: https://jq.qq.com/?_wv=1027&k=ISjeG32x
+.. _`Python全栈技术学习交流`: https://jq.qq.com/?_wv=1027&k=ISjeG32x
