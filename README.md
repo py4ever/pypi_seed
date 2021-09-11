@@ -1,7 +1,7 @@
 # pypi_seed
 
 Hey, this is a seed generator to generate
-- a seed project that available to upload to pypi.org
+- a seed project that available to be uploaded to pypi.org
 - it provides 'cli' to customize the seed before generation
 
 
@@ -36,7 +36,7 @@ pyseed --project=demo_project --author=testuser --dir=/tmp
 Open the python on terminal and type in below codes: \
 打开python终端REPL， 输入下面代码：
 
-- opt1 generation a seed project with the default options 
+- opt1 generate a seed project with the default options 
 
 默认生成方法，需要自己修改作者，项目名字（仅做试手）
 ```
@@ -44,7 +44,7 @@ import pypi_seed.generator as pm
 pm.generate() #当前目录生成pypi_sample
 ```
 
-- opt2 generation a seed project with the user customized options
+- opt2 generate a seed project with the user customized options
 
 定制生成自己的pypi库
 
