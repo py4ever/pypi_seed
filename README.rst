@@ -50,9 +50,10 @@ Yet another option / 另一种方式：
 
 ::
 
-    pyseed --project=demo_project --author=testuser --dir=/tmp
+    ppc --project=demo_project --author=testuser --dir=/tmp
 
 
+'ppc' here is a shortcut, short for PyPiSeed(P-P-C).
 
 Further discussion / 更多
 --------------------------

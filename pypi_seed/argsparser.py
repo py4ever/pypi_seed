@@ -20,8 +20,14 @@ def show_sample_run():
     print("pyseed --project demo_project --author testuser --dir=/tmp ")
 
 
+def show_version():
+    print('pypi-seed version %s' % VERSION)
+    print('clis:' )
+    print('pypiseed' )
+    print('pyseed' )
+
 def show_help():
-    print('pypiseed/pyseed version %s' % VERSION)
+    show_version()
     print('usage:')
     print('-h, --help: print help message.')
     print('-p, --project: your desired project name')
@@ -43,8 +49,12 @@ def show_about():
 
 def args2dict():
     argv = sys.argv[1:]
+    print("parameters: %s " % argv)
     if '-h' in argv or '--help' in argv:
         show_help()
+        exit(0)
+    if '-v' in argv or '--version' in argv:
+        show_version()
         exit(0)
     try:
         opts, args = getopt.getopt(argv, "p:d:a",

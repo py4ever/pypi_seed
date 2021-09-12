@@ -10,7 +10,7 @@ import os
 import pathlib
 
 from pypi_seed import argsparser
-from pypi_seed.template import TEMPLATE, README
+from pypi_seed.template import TEMPLATE, README, README_RST_TEMPLATE
 
 
 def do_generate():
@@ -26,16 +26,20 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
         print("project is already generated")
         return
     os.makedirs(seed_dir)
-    setup_py = os.path.join(seed_dir, "setup.py")
-    data = TEMPLATE % (project, author)
-    with open(setup_py, "w") as file:
-        file.write(data)
-    print("[stage1] %s created" % setup_py)
-    readme = os.path.join(seed_dir, "README.md")
-    data = README % (project, author)
-    with open(readme, "w") as file:
-        file.write(data)
-    print("[stage2] %s created" % readme)
+    stage_id = 0
+    stage_id = generate_setup(author, project, seed_dir, stage_id)
+    stage_id = generate_readme(author, project, seed_dir, stage_id)
+    stage_id = generate_module(project, seed_dir, stage_id)
+    stage_id = generate_test(seed_dir, stage_id)
+    print("Cool, pypi-seed has completed the project generation")
+    print("Now your turn, to develop your own library and share it on pypi ")
+    print("Powered by py4ever team")
+    print(
+        "Further discussion please contact qq group [Python全栈技术学习交流] or join by this link https://jq.qq.com/?_wv=1027&k=ISjeG32x")
+
+
+def generate_module(project, seed_dir, stage_id):
+    stage_id += 1
     module_dir = os.path.join(seed_dir, project)
     try:
         if not os.path.exists(module_dir):
@@ -43,12 +47,53 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
         init_file = os.path.join(module_dir, "__init__.py")
         if not os.path.exists(init_file):
             pathlib.Path(init_file).touch()
-        print("[stage3] module dir created at %s" % module_dir)
+        print("[stage-%s] module dir created at %s" % (stage_id, module_dir))
     except Exception as e:
         print("[warning] %s" % str(e))
-    print("cool, now your turn to work on your pypi lib as all completed.")
-    print("powered by py4ever team")
-    print("further discussion please contact qq group [Python全栈技术学习交流] or https://jq.qq.com/?_wv=1027&k=ISjeG32x")
+    finally:
+        return stage_id
+
+
+def generate_test(seed_dir, stage_id):
+    stage_id += 1
+    test_dir = os.path.join(seed_dir, 'tests')
+    try:
+        if not os.path.exists(test_dir):
+            os.mkdir(test_dir)
+        init_file = os.path.join(test_dir, "__init__.py")
+        if not os.path.exists(init_file):
+            pathlib.Path(init_file).touch()
+        print("[stage-%s] testcase dir created at %s" % (stage_id, test_dir))
+    except Exception as e:
+        print("[warning] %s" % str(e))
+    finally:
+        return stage_id
+
+
+def generate_readme(author, project, seed_dir, stage_id):
+    stage_id += 1
+    readme = os.path.join(seed_dir, "README.md")
+    data = README % (project, author)
+    with open(readme, "w") as file:
+        file.write(data)
+    print("[stage-%s] %s created" % (stage_id, readme))
+    stage_id += 1
+    readme = os.path.join(seed_dir, "README.rst")
+    data = README_RST_TEMPLATE % (project, project, author)
+    with open(readme, "w") as file:
+        file.write(data)
+    print("[stage-%s] %s created" % (stage_id, readme))
+    return stage_id
+
+
+def generate_setup(author, project, seed_dir, stage_id):
+    stage_id += 1
+    setup_py = os.path.join(seed_dir, "setup.py")
+    data = TEMPLATE % (project, author)
+    with open(setup_py, "w") as file:
+        file.write(data)
+    print("[stage-%s] %s created" % (stage_id, setup_py))
+    return stage_id
 
 
 if __name__ == '__main__':

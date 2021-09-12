@@ -36,7 +36,8 @@ Powered by py4ever team!""",
               'pypiseed = pypi_seed.main:main',
               'pypi-seed = pypi_seed.main:main',
               'pypi_seed = pypi_seed.main:main',
-              'pyseed = pypi_seed.main:main'
+              'ppseed = pypi_seed.main:main',
+              'ppc = pypi_seed.main:main'
           ]
       },
       classifiers=[

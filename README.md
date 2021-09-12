@@ -1,4 +1,4 @@
-# pypi_seed
+# pypi_seed aka ppc
 
 Hey, this is a seed generator to generate
 - a seed project that available to be uploaded to pypi.org
@@ -20,14 +20,19 @@ pip install pypi_seed
 
 # Use pypi_seed as CLI / 命令行使用
 
-We can call the cli 'pypiseed' or 'pyseed'： \
+We can call the cli 'ppc' or 'pypiseed' or 'ppseed'： \
 调用下面两个命令行即可。
+
+```bash
+ppc --project=demo_project --author=testuser --dir=/tmp
+```
+
 ```bash
 pypiseed --project=demo_project --author=testuser --dir=/tmp
 ```
 
 ```bash
-pyseed --project=demo_project --author=testuser --dir=/tmp
+ppseed --project=demo_project --author=testuser --dir=/tmp
 ```
 
 
@@ -62,6 +67,23 @@ import pypi_seed.generator as pm
 pm.generate(path="/tmp", project="pypi_sample", author="Lei小花") 
 ```
 
+# More background why I develop this module / 更多背后的故事
+
+Actually I come up with this idea after I developed some other python library and I do build some samples project as references for daily work.
+
+And after I wrote some blogs on programming on python as well as some study on Jupyter/Django projects, I realized I have to build this. 
+
+Other things like tackling with 'rst' file error or repeating the project sketch stuff which is kinda some 'boil-plain' work
+
+So I develop this module and after installation, you will get 'pypiseed' or 'ppseed' or a shortcut 'ppc'. 
+
+当我开发了很多python模块/项目之后，突然想起了干这个事情了，写个项目生成器，因此写了这个 pypi-seed。
+
+我写了很多python相关的博客，也看过很多开源的python项目，像Jupyter，Django等项目，吸取了一些项目组织的优点。
+
+当然，创建新项目需要准备rst说明文件，还有项目的基础配置等等，每次从0搭建都比较费时。
+
+这里做了一个简单的命令行工具'pypi-seed'或者'ppseed'或者'ppc', 一行命令帮助开发者创建自己的项目！
 
 # Further discussion / 更多使用问题
 
