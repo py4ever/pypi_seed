@@ -17,14 +17,14 @@ def show_sample_run():
     print("option1: ")
     print("pypiseed --project demo_project --author testuser --dir=/tmp ")
     print("option2: ")
-    print("pyseed --project demo_project --author testuser --dir=/tmp ")
+    print("ppc --project demo_project --author testuser --dir=/tmp ")
 
 
 def show_version():
     print('pypi-seed version %s' % VERSION)
-    print('clis:' )
+    print('ClIs:' )
     print('pypiseed' )
-    print('pyseed' )
+    print('ppc' )
 
 def show_help():
     show_version()

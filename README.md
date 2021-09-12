@@ -4,11 +4,16 @@ Hey, this is a seed generator to generate
 - a seed project that available to be uploaded to pypi.org
 - it provides 'cli' to customize the seed before generation
 
+'ppc' here is a shortcut, short for PyPiSeed(P-P-C).
 
 一个pypi的项目模板（种子项目） \
 用途：
 1) 提供了cli（命令行工具帮你生成符合pypi上传要求的库）
 2) 本示例库有社区维护，还有大量专业的Python大佬一起合作。
+
+这里的 'ppc' 就是一个快捷调用pypiseed的指令，它是谐音了PyPiSeed（P-P-C），方便使用者记忆，比输入pypiseed更快速。
+
+
 
 # Installation / 安装
 
