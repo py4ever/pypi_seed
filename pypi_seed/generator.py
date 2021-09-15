@@ -10,6 +10,7 @@ import os
 import pathlib
 
 from pypi_seed import argsparser
+from pypi_seed.common_template import GIT_IGNORE
 from pypi_seed.template import TEMPLATE, README, README_RST_TEMPLATE
 
 
@@ -28,6 +29,7 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
     os.makedirs(seed_dir)
     stage_id = 0
     stage_id = generate_setup(author, project, seed_dir, stage_id)
+    stage_id = generate_gitignore(seed_dir, stage_id)
     stage_id = generate_readme(author, project, seed_dir, stage_id)
     stage_id = generate_module(project, seed_dir, stage_id)
     stage_id = generate_test(seed_dir, stage_id)
@@ -68,6 +70,15 @@ def generate_test(seed_dir, stage_id):
         print("[warning] %s" % str(e))
     finally:
         return stage_id
+
+
+def generate_gitignore(seed_dir, stage_id):
+    stage_id += 1
+    gitignore = os.path.join(seed_dir, '.gitignore')
+    with open(gitignore, "w") as file:
+        file.write(GIT_IGNORE)
+    print("[stage-%s] %s created" % (stage_id, gitignore))
+    return stage_id
 
 
 def generate_readme(author, project, seed_dir, stage_id):
