@@ -11,7 +11,7 @@ import pathlib
 
 from pypi_seed import argsparser
 from pypi_seed.common_template import GIT_IGNORE
-from pypi_seed.template import TEMPLATE, README, README_RST_TEMPLATE
+from pypi_seed.template_loader import load_template
 
 
 def do_generate():
@@ -38,6 +38,7 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
     print("Powered by py4ever team")
     print(
         "Further discussion please contact qq group [Python全栈技术学习交流] or join by this link https://jq.qq.com/?_wv=1027&k=ISjeG32x")
+    return stage_id
 
 
 def generate_module(project, seed_dir, stage_id):
@@ -84,13 +85,13 @@ def generate_gitignore(seed_dir, stage_id):
 def generate_readme(author, project, seed_dir, stage_id):
     stage_id += 1
     readme = os.path.join(seed_dir, "README.md")
-    data = README % (project, author)
+    data = load_template("readme.md") % (project, author)
     with open(readme, "w") as file:
         file.write(data)
     print("[stage-%s] %s created" % (stage_id, readme))
     stage_id += 1
     readme = os.path.join(seed_dir, "README.rst")
-    data = README_RST_TEMPLATE % (project, project, author)
+    data = load_template("readme.rst") % (project, project, author)
     with open(readme, "w") as file:
         file.write(data)
     print("[stage-%s] %s created" % (stage_id, readme))
@@ -100,7 +101,7 @@ def generate_readme(author, project, seed_dir, stage_id):
 def generate_setup(author, project, seed_dir, stage_id):
     stage_id += 1
     setup_py = os.path.join(seed_dir, "setup.py")
-    data = TEMPLATE % (project, author)
+    data = load_template("setup.py") % (project, author)
     with open(setup_py, "w") as file:
         file.write(data)
     print("[stage-%s] %s created" % (stage_id, setup_py))

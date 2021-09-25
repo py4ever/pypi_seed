@@ -50,14 +50,14 @@ def show_about():
 def args2dict():
     argv = sys.argv[1:]
     print("parameters: %s " % argv)
-    if '-h' in argv or '--help' in argv:
-        show_help()
-        exit(0)
-    if '-v' in argv or '--version' in argv:
-        show_version()
-        exit(0)
+    # if '-h' in argv or '--help' in argv:
+    #     show_help()
+    #     exit(0)
+    # if '-v' in argv or '--version' in argv:
+    #     show_version()
+    #     exit(0)
     try:
-        opts, args = getopt.getopt(argv, "p:d:a",
+        opts, args = getopt.getopt(argv, "hvp:d:a:",
                                    ["project=",
                                     "dir=",
                                     "author=", ])
@@ -68,6 +68,15 @@ def args2dict():
     author = None
     print("opts is %s" % opts)
     for opt, arg in opts:
+        if opt in ['-h', '--help']:
+            show_help()
+            return dict()
+        if opt in ['-v', '--version']:
+            show_version()
+            return dict()
+        if opt in ['-p', '--project']:
+            print("project: %s" % arg)
+            project = arg
         if opt in ['-p', '--project']:
             print("project: %s" % arg)
             project = arg

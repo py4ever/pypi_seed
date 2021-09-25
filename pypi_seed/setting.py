@@ -11,5 +11,5 @@ import os
 # Name should didn't be changed as it need to align with pypi
 NAME = "pypi_seed"
 # Change the version everytime when a upload to pypi to issue a new version
-VERSION = "1.0.7b"
+VERSION = "1.0.7c"
 
