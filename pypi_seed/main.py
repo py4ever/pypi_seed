@@ -14,7 +14,7 @@ from pypi_seed.generator import do_generate
 def main():
     if len(sys.argv) <= 1:
         argsparser.show_help()
-        sys.exit(0)
+        return None
     do_generate()
 
 

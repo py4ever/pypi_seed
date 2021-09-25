@@ -10,14 +10,15 @@ import os
 import pathlib
 
 from pypi_seed import argsparser
-from pypi_seed.common_template import GIT_IGNORE
 from pypi_seed.template_loader import load_template
 
 
 def do_generate():
     conf = argsparser.args2dict()
-    print("project setting: %s" % str(conf))
-    generate(**conf)
+    if conf:
+        if 'verbose' in conf and conf['verbose']:
+            print("project setting: %s" % str(conf))
+        generate(**conf)
 
 
 def generate(dir=".", project="pypi_sample", author="pypi_seed"):
@@ -86,8 +87,9 @@ def generate_test(project, seed_dir, stage_id):
 def generate_gitignore(seed_dir, stage_id):
     stage_id += 1
     gitignore = os.path.join(seed_dir, '.gitignore')
+    data = load_template("gitignore.py")
     with open(gitignore, "w") as file:
-        file.write(GIT_IGNORE)
+        file.write(data)
     print("[stage-%s] %s created" % (stage_id, gitignore))
     return stage_id
 

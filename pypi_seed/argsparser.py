@@ -13,27 +13,33 @@ import sys
 from pypi_seed.setting import VERSION
 
 
+def print_error(msg):
+    print("\033[0;31;40m%s\033[0m" % msg)
+
+
 def show_sample_run():
     print("option1: ")
     print("pypiseed --project demo_project --author testuser --dir=/tmp ")
     print("option2: ")
     print("ppc --project demo_project --author testuser --dir=/tmp ")
+    print("option3: ")
+    print("ppc -p demo_project -a testuser -d /tmp ")
 
 
 def show_version():
     print('pypi-seed version %s' % VERSION)
     print('ClIs:')
-    print('pypiseed')
-    print('ppc')
+    print('\tpypiseed')
+    print('\tppc')
 
 
 def show_help():
     show_version()
     print('usage:')
-    print('-h, --help: print help message.')
-    print('-p, --project: your desired project name')
-    print('-d, --dir: where to save the sample project after code-generation')
-    print('-a, --author: the author information')
+    print('\t-h, --help: print help message.')
+    print('\t-p, --project: your desired project name')
+    print('\t-d, --dir: where to save the sample project after code-generation')
+    print('\t-a, --author: the author information')
     print("===========================================")
     show_sample_run()
     show_about()
@@ -50,21 +56,17 @@ def show_about():
 
 def args2dict():
     argv = sys.argv[1:]
-    print("parameters: %s " % argv)
-    # if '-h' in argv or '--help' in argv:
-    #     show_help()
-    #     exit(0)
-    # if '-v' in argv or '--version' in argv:
-    #     show_version()
-    #     exit(0)
+    verbose = False
     try:
         opts, args = getopt.getopt(argv, "hvp:d:a:",
                                    ["help",
                                     "version",
+                                    "verbose",
                                     "project=",
                                     "dir=",
                                     "author=", ])
     except Exception as e:
+        print("parameters: %s " % argv)
         raise ValueError("Looks like missing value, please check usage by '-h'. Current error : %s " % str(e))
     project = None
     path = None
@@ -73,10 +75,12 @@ def args2dict():
     for opt, arg in opts:
         if opt in ['-h', '--help']:
             show_help()
-            return dict()
+            return None
         if opt in ['-v', '--version']:
             show_version()
-            return dict()
+            return None
+        if opt in ['--verbose']:
+            verbose = True
         if opt in ['-p', '--project']:
             print("project: %s" % arg)
             project = arg
@@ -87,15 +91,18 @@ def args2dict():
             print("directory: %s" % arg)
             path = arg
     if project is None:
-        print("please input project with '-p' or '--project', e.g. -p my_project ")
-        raise ValueError("Missing project")
+        print_error("Missing project, please input project with '-p' or '--project', e.g. -p my_project")
+        show_sample_run()
+        return None
     if author is None:
-        print("please input author with '-a' or '--author', e.g. -a whoami ")
-        raise ValueError("Missing author")
+        print("Missing author")
+        print_error("Missing author, please input author with '-a' or '--author', e.g. -a testuser")
+        show_sample_run()
+        return None
     if path is None:
         path = os.getcwd()
         print("path is not given, so will use default as current directory : %s" % path)
-    return dict(project=project, author=author, dir=path)
+    return dict(project=project, author=author, dir=path, verbose=verbose)
 
 
 if __name__ == "__main__":

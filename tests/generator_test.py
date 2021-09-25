@@ -11,7 +11,7 @@ PROJECT_PATH = os.path.dirname(MPATH)
 
 class GeneratorTestCase(unittest.TestCase):
     def test_generate(self):
-        dir = os.path.join(PROJECT_PATH, "tests/ignored")
+        dir = os.path.join(PROJECT_PATH, "tests-gen-ignored")
         project = "test" + str(uuid.uuid4())
         author = "levin"
         final_dir = os.path.join(dir, project)

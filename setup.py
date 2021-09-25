@@ -56,7 +56,7 @@ Powered by py4ever team!""",
           'Programming Language :: Python :: 3.9',
           'Topic :: Software Development :: Libraries'
       ],
-      # package_data={
-      #     '': ['template*.template']
-      # },
+      package_data={
+          '': ['template/*.template']
+      },
       )

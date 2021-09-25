@@ -131,3 +131,4 @@ dmypy.json
 #ignore pycharm project setting
 .idea
 /tests/ignored/
+/tests-gen-ignored/
