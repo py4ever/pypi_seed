@@ -17,7 +17,7 @@ class MainTestCase(unittest.TestCase):
     def test_main(self):
         actual = main.main()
         expect = "hello %s"
-        self.assertEqual(expect, actual, "Must execute all the stages")
+        self.assertEqual(expect, actual, "Must match")
 
 
 if __name__ == '__main__':
