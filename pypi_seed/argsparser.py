@@ -27,12 +27,11 @@ def show_all_samples():
     print("option4: ")
     print("ppc -p demo_project -a testuser -d /tmp --cli ")
 
+
 def show_sample_run():
     print("option1: ")
     print("pypiseed --project demo_project --author testuser --dir=/tmp ")
     print("option2: ")
-    print("ppc --project demo_project --author testuser --dir=/tmp ")
-    print("option3: ")
     print("ppc -p demo_project -a testuser -d /tmp ")
 
 
@@ -53,7 +52,7 @@ def show_help():
     print('\t-a, --author: the author information')
     print('\t--cli: generate sample cli-project')
     print("===========================================")
-    show_sample_run()
+    show_all_samples()
     show_about()
 
 
@@ -61,7 +60,7 @@ def show_about():
     print("===========================================")
     print("pypi_seed #种子项目")
     print("欢迎关注公众号【雷学委】【孤寒者】【布小禅】，加入Python开发者阵营！")
-    print("Welcome to subscribe wechat-media【雷学委】【孤寒】【布小禅】and join python group！")
+    print("Welcome to subscribe wechat-media【雷学委】【孤寒者】【布小禅】and join python group！")
     print("Further queries please contact qq：【Python全栈技术学习交流】Click this link=> https://jq.qq.com/?_wv=1027&k=ISjeG32x ")
     print("===========================================")
 

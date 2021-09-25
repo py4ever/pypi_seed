@@ -129,7 +129,7 @@ def generate_setup(author, project, seed_dir, stage_id, with_cli=False):
     setup_py = os.path.join(seed_dir, "setup.py")
     if with_cli:
         setup_py_template = "cli.setup.py"
-        data = load_template(setup_py_template) % (project, author, project, project)
+        data = load_template(setup_py_template) % (project, author, project, project, project, project)
         with open(setup_py, "w") as file:
             file.write(data)
     else:
