@@ -14,7 +14,8 @@ setup(name='%s',  ## 包名
       platforms=["all"],
       entry_points={
           'console_scripts': [
-              '%s = %s.main:main'
+              '%s = %s.main:main',
+              '%s-cli = %s.main:main'
           ]
       },
       classifiers=[
