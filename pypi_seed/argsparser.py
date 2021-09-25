@@ -61,6 +61,7 @@ def args2dict():
         opts, args = getopt.getopt(argv, "hvp:d:a:",
                                    ["help",
                                     "version",
+                                    "cli",
                                     "verbose",
                                     "project=",
                                     "dir=",
@@ -71,6 +72,7 @@ def args2dict():
     project = None
     path = None
     author = None
+    cli = False
     print("opts is %s" % opts)
     for opt, arg in opts:
         if opt in ['-h', '--help']:
@@ -81,6 +83,8 @@ def args2dict():
             return None
         if opt in ['--verbose']:
             verbose = True
+        if opt in ['--cli']:
+            cli = True
         if opt in ['-p', '--project']:
             print("project: %s" % arg)
             project = arg
@@ -95,14 +99,13 @@ def args2dict():
         show_sample_run()
         return None
     if author is None:
-        print("Missing author")
         print_error("Missing author, please input author with '-a' or '--author', e.g. -a testuser")
         show_sample_run()
         return None
     if path is None:
         path = os.getcwd()
         print("path is not given, so will use default as current directory : %s" % path)
-    return dict(project=project, author=author, dir=path, verbose=verbose)
+    return dict(name=project, author=author, dir=path, verbose=verbose, with_cli=cli)
 
 
 if __name__ == "__main__":

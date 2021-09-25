@@ -10,6 +10,7 @@ import os
 import pathlib
 
 from pypi_seed import argsparser
+from pypi_seed.project import dict2project
 from pypi_seed.template_loader import load_template
 
 
@@ -18,10 +19,21 @@ def do_generate():
     if conf:
         if 'verbose' in conf and conf['verbose']:
             print("project setting: %s" % str(conf))
-        generate(**conf)
+        # generate(**conf)
+        meta = dict2project(**conf)
+        generate_project(meta)
 
 
-def generate(dir=".", project="pypi_sample", author="pypi_seed"):
+def generate_project(meta):
+    dir = meta.dir
+    project = meta.name
+    author = meta.author
+    with_cli = meta.with_cli
+    verbose = meta.verbose
+    generate(dir=dir, project=project, author=author, verbose=verbose, with_cli=with_cli)
+
+
+def generate(dir=".", project="pypi_sample", author="pypi_seed", verbose=False, with_cli=False):
     seed_dir = os.path.join(dir, project)
     print("will generate project at %s " % seed_dir)
     if os.path.exists(seed_dir):
@@ -29,13 +41,13 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
         return
     os.makedirs(seed_dir)
     stage_id = 0
-    stage_id = generate_setup(author, project, seed_dir, stage_id)
+    stage_id = generate_setup(author, project, seed_dir, stage_id, with_cli)
     stage_id = generate_gitignore(seed_dir, stage_id)
     stage_id = generate_readme(author, project, seed_dir, stage_id)
     stage_id = generate_module(project, seed_dir, stage_id)
     stage_id = generate_test(project, seed_dir, stage_id)
     print("Cool, pypi-seed has completed the project generation")
-    print("Now your turn, to develop your own library and share it on pypi ")
+    print("Now your turn, continue to develop your own library and share it on pypi ")
     print("Powered by py4ever team")
     print(
         "Further discussion please contact qq group [Python全栈技术学习交流] or join by this link https://jq.qq.com/?_wv=1027&k=ISjeG32x")
@@ -110,12 +122,19 @@ def generate_readme(author, project, seed_dir, stage_id):
     return stage_id
 
 
-def generate_setup(author, project, seed_dir, stage_id):
+def generate_setup(author, project, seed_dir, stage_id, with_cli=False):
     stage_id += 1
     setup_py = os.path.join(seed_dir, "setup.py")
-    data = load_template("setup.py") % (project, author)
-    with open(setup_py, "w") as file:
-        file.write(data)
+    if with_cli:
+        setup_py_template = "cli.setup.py"
+        data = load_template(setup_py_template) % (project, author, project, project)
+        with open(setup_py, "w") as file:
+            file.write(data)
+    else:
+        setup_py_template = "setup.py"
+        data = load_template(setup_py_template) % (project, author)
+        with open(setup_py, "w") as file:
+            file.write(data)
     print("[stage-%s] %s created" % (stage_id, setup_py))
     return stage_id
 
