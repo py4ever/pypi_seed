@@ -3,6 +3,7 @@
 Hey, this is a seed generator to generate
 - a seed project that available to be uploaded to pypi.org
 - it provides 'cli' to customize the seed before generation
+- support the standard python project generation or CLI python lib generation( run with '--cli' option)
 
 'ppc' here is a shortcut, short for PyPiSeed(P-P-C).
 
@@ -10,6 +11,7 @@ Hey, this is a seed generator to generate
 用途：
 1) 提供了cli（命令行工具帮你生成符合pypi上传要求的库）
 2) 本示例库有社区维护，还有大量专业的Python大佬一起合作。
+3) 支持生成普通标准Python模块或者cli库模版项目（加上--cli选项）
 
 这里的 'ppc' 就是一个快捷调用pypiseed的指令，它是谐音了PyPiSeed（P-P-C），方便使用者记忆，比输入pypiseed更快速。
 
