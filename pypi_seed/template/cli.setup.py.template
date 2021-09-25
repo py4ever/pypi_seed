@@ -1,15 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Time : 2021/9/9 11:11 下午
-# @Author : LeiXueWei
-# @CSDN/Juejin/Wechat: 雷学委
-# @XueWeiTag: CodingDemo
-# @File : template.py
-# @Project : pypi_seed
-
-
-
-TEMPLATE = """
 from distutils.core import setup
 from setuptools import find_packages
 
@@ -24,6 +12,11 @@ setup(name='%s',  ## 包名
       license='Apache License 2.0', ##许可证类型
       packages=find_packages(),
       platforms=["all"],
+      entry_points={
+          'console_scripts': [
+              '%s = %s.main:main'
+          ]
+      },
       classifiers=[
           'Intended Audience :: Developers',
           'Operating System :: OS Independent',
@@ -40,48 +33,3 @@ setup(name='%s',  ## 包名
           'Topic :: Software Development :: Libraries'
       ],
       )
-"""
-
-README = """
-# %s
-
-Please change the description here (for your project)
-
-这里需要改成自己的项目信息，比如：一个pypi的项目模板（种子项目）
-
-
-Powered by [pypi-seed](https://pypi.org/project/pypi-seed/)
-
-# More Info 
-Author %s
-"""
-
-
-README_RST_TEMPLATE = """
-%s
-=========
-
-Please change the description here (for your project)
-
-这里需要改成自己的项目信息，比如：一个pypi的项目模板（种子项目）
-
-Package hosted on [`pypi`_] and powered by [`pypi-seed`_]
-
-Installation / 安装
---------------------------
-
-::
-
-    pip install %s
-
-
-More Info 
---------------------------
-
-Author %s
-
-.. _`pypi`: https://pypi.org/
-.. _`pypi-seed`: https://pypi.org/project/pypi-seed/
-
-"""
-
