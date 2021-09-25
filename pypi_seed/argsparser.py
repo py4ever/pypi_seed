@@ -22,9 +22,10 @@ def show_sample_run():
 
 def show_version():
     print('pypi-seed version %s' % VERSION)
-    print('ClIs:' )
-    print('pypiseed' )
-    print('ppc' )
+    print('ClIs:')
+    print('pypiseed')
+    print('ppc')
+
 
 def show_help():
     show_version()
@@ -58,7 +59,9 @@ def args2dict():
     #     exit(0)
     try:
         opts, args = getopt.getopt(argv, "hvp:d:a:",
-                                   ["project=",
+                                   ["help",
+                                    "version",
+                                    "project=",
                                     "dir=",
                                     "author=", ])
     except Exception as e:
@@ -74,9 +77,6 @@ def args2dict():
         if opt in ['-v', '--version']:
             show_version()
             return dict()
-        if opt in ['-p', '--project']:
-            print("project: %s" % arg)
-            project = arg
         if opt in ['-p', '--project']:
             print("project: %s" % arg)
             project = arg

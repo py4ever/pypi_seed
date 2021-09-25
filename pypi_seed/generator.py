@@ -32,7 +32,7 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed"):
     stage_id = generate_gitignore(seed_dir, stage_id)
     stage_id = generate_readme(author, project, seed_dir, stage_id)
     stage_id = generate_module(project, seed_dir, stage_id)
-    stage_id = generate_test(seed_dir, stage_id)
+    stage_id = generate_test(project, seed_dir, stage_id)
     print("Cool, pypi-seed has completed the project generation")
     print("Now your turn, to develop your own library and share it on pypi ")
     print("Powered by py4ever team")
@@ -51,13 +51,18 @@ def generate_module(project, seed_dir, stage_id):
         if not os.path.exists(init_file):
             pathlib.Path(init_file).touch()
         print("[stage-%s] module dir created at %s" % (stage_id, module_dir))
+        main_py = os.path.join(module_dir, "main.py")
+        data = load_template("main.py") % (project, project)
+        with open(main_py, "w") as file:
+            file.write(data)
+        print("[stage-%s] module main.py created at %s" % (stage_id, main_py))
     except Exception as e:
         print("[warning] %s" % str(e))
     finally:
         return stage_id
 
 
-def generate_test(seed_dir, stage_id):
+def generate_test(project, seed_dir, stage_id):
     stage_id += 1
     test_dir = os.path.join(seed_dir, 'tests')
     try:
@@ -67,6 +72,11 @@ def generate_test(seed_dir, stage_id):
         if not os.path.exists(init_file):
             pathlib.Path(init_file).touch()
         print("[stage-%s] testcase dir created at %s" % (stage_id, test_dir))
+        test_main = os.path.join(test_dir, "test_main.py")
+        data = load_template("test_main.py") % (project, project, project)
+        with open(test_main, "w") as file:
+            file.write(data)
+        print("[stage-%s] testcase test_main.py created at %s" % (stage_id, test_main))
     except Exception as e:
         print("[warning] %s" % str(e))
     finally:
