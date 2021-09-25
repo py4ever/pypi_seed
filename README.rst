@@ -7,6 +7,7 @@ Hey, this is a seed generator to generate pypi seed  for you to quick start on s
 
 - a seed project that available to upload to pypi.org
 
+- support the standard python project generation or CLI python lib generation( run with '--cli' option)
 
 您好，这是一个pypi的种子项目，它能帮你快速生成python库模板，生成的项目稍微修改，就能上传到pypi分享自己的项目了 \
 
@@ -15,6 +16,10 @@ Hey, this is a seed generator to generate pypi seed  for you to quick start on s
 - 提供了cli（命令行工具帮你生成符合pypi上传要求的库）
 
 - 本示例库有社区维护，还有大量专业的Python大佬一起合作。
+
+- 支持生成普通标准Python模块或者cli库模版项目（加上--cli选项）
+
+
 
 [ContactProjectTeam](https://github.com/py4ever/pypi_seed)
 
