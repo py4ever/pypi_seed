@@ -17,6 +17,16 @@ def print_error(msg):
     print("\033[0;31;40m%s\033[0m" % msg)
 
 
+def show_all_samples():
+    print("option1: ")
+    print("pypiseed --project demo_project --author testuser --dir=/tmp ")
+    print("option2: ")
+    print("ppc --project demo_project --author testuser --dir=/tmp ")
+    print("option3: ")
+    print("ppc -p demo_project -a testuser -d /tmp ")
+    print("option4: ")
+    print("ppc -p demo_project -a testuser -d /tmp --cli ")
+
 def show_sample_run():
     print("option1: ")
     print("pypiseed --project demo_project --author testuser --dir=/tmp ")
@@ -37,9 +47,11 @@ def show_help():
     show_version()
     print('usage:')
     print('\t-h, --help: print help message.')
+    print('\t-v, --version: print help message.')
     print('\t-p, --project: your desired project name')
     print('\t-d, --dir: where to save the sample project after code-generation')
     print('\t-a, --author: the author information')
+    print('\t--cli: generate sample cli-project')
     print("===========================================")
     show_sample_run()
     show_about()

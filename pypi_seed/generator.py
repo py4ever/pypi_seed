@@ -12,6 +12,7 @@ import pathlib
 from pypi_seed import argsparser
 from pypi_seed.project import dict2project
 from pypi_seed.template_loader import load_template
+from pypi_seed.guide import generate_quickstart
 
 
 def do_generate():
@@ -46,6 +47,7 @@ def generate(dir=".", project="pypi_sample", author="pypi_seed", verbose=False, 
     stage_id = generate_readme(author, project, seed_dir, stage_id)
     stage_id = generate_module(project, seed_dir, stage_id)
     stage_id = generate_test(project, seed_dir, stage_id)
+    generate_quickstart(seed_dir)
     print("Cool, pypi-seed has completed the project generation")
     print("Now your turn, continue to develop your own library and share it on pypi ")
     print("Powered by py4ever team")
