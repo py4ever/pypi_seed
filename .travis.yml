@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+os: centos
+install:
+  - pip install -r test_requirements.txt
+  - python setup.py install
+script: 
+  - pytest --cov=pypi_seed
+  - COVERALLS_REPO_TOKEN=uk1dv6fR0ovgVeVChn6qFc3JMths88zWe coveralls
+virtualenv:
+  system_site_packages: true
