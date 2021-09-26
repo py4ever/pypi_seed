@@ -13,21 +13,21 @@ class ArgsParserTestCase(unittest.TestCase):
     def test_args2dict_opt1(self):
         sys.argv = [__file__, "--project=demo", "--author=levin", "--dir=/tmp"]
         print("system args is %s" % sys.argv)
-        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'cli': False}
+        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'with_cli': False}
         actual = ap.args2dict()
         self.assertDictEqual(expect, actual, "Invalid ")
 
     def test_args2dict_opt2(self):
         sys.argv = [__file__, "--project", "demo", "--author", "levin", "--dir", "/tmp"]
         print("system args is %s" % sys.argv)
-        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'cli': False}
+        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'with_cli': False}
         actual = ap.args2dict()
         self.assertDictEqual(expect, actual, "Invalid ")
 
     def test_args2dict_short_opt1(self):
         sys.argv = [__file__, "-p", "demo", "-a", "levin", "-d", "/tmp"]
         print("system args is %s" % sys.argv)
-        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'cli': False}
+        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'with_cli': False}
         actual = ap.args2dict()
         self.assertDictEqual(expect, actual, "Invalid ")
 
