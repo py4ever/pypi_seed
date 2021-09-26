@@ -61,6 +61,7 @@ def show_about():
     print("pypi_seed #种子项目")
     print("欢迎关注公众号【雷学委】【孤寒者】【布小禅】，加入Python开发者阵营！")
     print("Welcome to subscribe wechat-media【雷学委】【孤寒者】【布小禅】and join python group！")
+    print("Upgrade cmd： pip install pypi-seed --upgrade")
     print("Further queries please contact qq：【Python全栈技术学习交流】Click this link=> https://jq.qq.com/?_wv=1027&k=ISjeG32x ")
     print("===========================================")
 
