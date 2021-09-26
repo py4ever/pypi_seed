@@ -1,0 +1,12 @@
+
+pip install virtualenv
+
+virtualenv .
+
+source bin/activate && \
+python setup.py sdist && \
+python setup.py install && \
+
+
+
+
