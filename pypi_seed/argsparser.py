@@ -70,12 +70,13 @@ def args2dict():
     argv = sys.argv[1:]
     verbose = False
     try:
-        opts, args = getopt.getopt(argv, "hvp:d:a:",
+        opts, args = getopt.getopt(argv, "hvn:p:d:a:",
                                    ["help",
                                     "version",
                                     "cli",
                                     "verbose",
                                     "project=",
+                                    "name=",
                                     "dir=",
                                     "author=", ])
     except Exception as e:
@@ -97,7 +98,7 @@ def args2dict():
             verbose = True
         if opt in ['--cli']:
             cli = True
-        if opt in ['-p', '--project']:
+        if opt in ['-p', '-n', '--name', '--project']:
             print("project: %s" % arg)
             project = arg
         elif opt in ['-a', '--author']:

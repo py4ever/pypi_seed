@@ -43,6 +43,13 @@ class ArgsParserTestCase(unittest.TestCase):
         actual = ap.args2dict()
         self.assertIsNone(actual, "Invalid ")
 
+    def test_args2dict_short_opt4(self):
+        sys.argv = [__file__, "-n", "demo", "-a", "levin", "-d", "/tmp"]
+        print("system args is %s" % sys.argv)
+        expect = {'name': 'demo', 'author': 'levin', 'dir': '/tmp', 'verbose': False, 'with_cli': False}
+        actual = ap.args2dict()
+        self.assertDictEqual(expect, actual, "Invalid ")
+
 
 if __name__ == '__main__':
     unittest.main()
