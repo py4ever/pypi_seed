@@ -30,6 +30,6 @@ def load_template(template_path):
     tpath = resolve(template_path)
     if not os.path.exists(tpath):
         raise IOError("Cannot resolve template on path " + tpath)
-    with open(tpath, 'r') as f:
+    with open(tpath, 'r', encoding='UTF-8') as f:
         return f.read()
     return None
