@@ -1,6 +1,6 @@
 language: python
 python:
-  - "2.7"
+  - "3"
 os: centos
 install:
   - pip install -r test_requirements.txt
